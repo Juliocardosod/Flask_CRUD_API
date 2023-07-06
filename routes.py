@@ -2,7 +2,7 @@ from flask import Flask, request
 from model.main import insertUsuario
 from model.main import selectUser #import insertUsuario
 
-app = Flask("MinhaAPI")
+app = Flask(__name__)
 
 @app.route("/olamundo", methods = ["GET"])
 def olaMundo():
@@ -49,4 +49,5 @@ def geraResponse(status, mensagem, nome_do_conteudo=False, conteudo=False):
 
     return response
 
-app.run()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=5090)
